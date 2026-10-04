@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Profile - OrderFlow</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-900 text-white shadow-lg">
+
+    <div class="max-w-7xl mx-auto px-6 py-4">
+
+        <div class="flex items-center justify-between">
+
+            <a th:href="@{/dashboard}"
+               class="text-2xl font-bold">
+
+                Order<span class="text-indigo-400">Flow</span>
+
+            </a>
+
+
+            <div class="flex items-center gap-6">
+
+                <a th:href="@{/dashboard}"
+                   class="text-slate-300 hover:text-white">
+
+                    Dashboard
+
+                </a>
+
+                <a th:href="@{/orders}"
+                   class="text-slate-300 hover:text-white">
+
+                    Orders
+
+                </a>
+
+                <a th:href="@{/profile}"
+                   class="text-indigo-400 font-semibold">
+
+                    Profile
+
+                </a>
+
+                <button id="logoutButton"
+                        class="bg-red-500 hover:bg-red-600
+                               px-4 py-2 rounded-lg">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="max-w-4xl mx-auto px-6 py-12">
+
+
+    <!-- Header -->
+
+    <div class="mb-8">
+
+        <p class="text-indigo-600
+                  font-semibold
+                  text-sm">
+
+            ACCOUNT
+
+        </p>
+
+        <h1 class="text-4xl
+                   font-bold
+                   text-slate-900 mt-2">
+
+            My Profile
+
+        </h1>
+
+        <p class="text-slate-500 mt-2">
+
+            View your account information.
+
+        </p>
+
+    </div>
+
+
+    <!-- ================= PROFILE CARD ================= -->
+
+    <div class="bg-white rounded-2xl
+                border border-slate-200
+                shadow-sm overflow-hidden">
+
+
+        <!-- Profile Header -->
+
+        <div class="bg-gradient-to-r
+                    from-indigo-600
+                    to-purple-600
+                    px-8 py-10
+                    text-white">
+
+
+            <div class="flex items-center gap-5">
+
+
+                <!-- Avatar -->
+
+                <div class="w-20 h-20
+                            rounded-full
+                            bg-white
+                            text-indigo-600
+                            flex items-center
+                            justify-center
+                            text-3xl
+                            font-bold
+                            shadow-lg">
+
+                    <span id="avatar">
+                        U
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <h2 id="profileUsername"
+                        class="text-3xl
+                               font-bold">
+
+                        Loading...
+
+                    </h2>
+
+                    <p class="text-indigo-100
+                              mt-1">
+
+                        OrderFlow User
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Profile Information -->
+
+        <div class="p-8">
+
+
+            <h3 class="text-xl
+                       font-bold
+                       text-slate-900
+                       mb-6">
+
+                Account Information
+
+            </h3>
+
+
+            <!-- Username -->
+
+            <div class="border-b
+                        border-slate-200
+                        py-5">
+
+                <div class="flex
+                            flex-col
+                            sm:flex-row
+                            sm:items-center
+                            sm:justify-between
+                            gap-2">
+
+                    <div>
+
+                        <p class="text-sm
+                                  text-slate-500">
+
+                            Username
+
+                        </p>
+
+                        <p id="username"
+                           class="text-lg
+                                  font-semibold
+                                  text-slate-900
+                                  mt-1">
+
+                            Loading...
+
+                        </p>
+
+                    </div>
+
+                    <span class="inline-block
+                                 bg-green-100
+                                 text-green-700
+                                 text-sm
+                                 px-3 py-1
+                                 rounded-full
+                                 font-medium">
+
+                        Active
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Authentication -->
+
+            <div class="border-b
+                        border-slate-200
+                        py-5">
+
+                <p class="text-sm
+                          text-slate-500">
+
+                    Authentication
+
+                </p>
+
+                <p class="text-lg
+                          font-semibold
+                          text-slate-900
+                          mt-1">
+
+                    JWT Authentication
+
+                </p>
+
+            </div>
+
+
+            <!-- Service -->
+
+            <div class="py-5">
+
+                <p class="text-sm
+                          text-slate-500">
+
+                    Account Service
+
+                </p>
+
+                <p class="text-lg
+                          font-semibold
+                          text-slate-900
+                          mt-1">
+
+                    Auth Service
+
+                </p>
+
+            </div>
+
+
+            <!-- Message -->
+
+            <div id="profileMessage"
+                 class="hidden
+                        mt-5
+                        px-4 py-3
+                        rounded-lg">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- Back -->
+
+    <div class="mt-6">
+
+        <a th:href="@{/dashboard}"
+           class="text-indigo-600
+                  hover:text-indigo-700
+                  font-medium">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<script th:src="@{/js/api.js}"></script>
+
+<script th:src="@{/js/profile.js}"></script>
+
+
+</body>
+
+</html>

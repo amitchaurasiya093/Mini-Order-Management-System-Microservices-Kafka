@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - OrderFlow</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-900 text-white shadow-lg">
+
+    <div class="max-w-7xl mx-auto px-6 py-4">
+
+        <div class="flex items-center justify-between">
+
+            <!-- Logo -->
+
+            <a th:href="@{/}"
+               class="text-2xl font-bold tracking-wide">
+
+                Order<span class="text-indigo-400">Flow</span>
+
+            </a>
+
+
+            <!-- Navigation -->
+
+            <div class="flex items-center gap-6">
+
+                <a th:href="@{/dashboard}"
+                   class="text-indigo-400 font-medium">
+
+                    Dashboard
+
+                </a>
+
+                <a th:href="@{/orders}"
+                   class="text-slate-300 hover:text-white">
+
+                    Orders
+
+                </a>
+
+                <a th:href="@{/profile}"
+                   class="text-slate-300 hover:text-white">
+
+                    Profile
+
+                </a>
+
+                <button id="logoutButton"
+                        class="bg-red-500 hover:bg-red-600
+                               px-4 py-2 rounded-lg
+                               font-medium transition">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+
+    <!-- Welcome Section -->
+
+    <div class="mb-10">
+
+        <p class="text-indigo-600 font-semibold text-sm uppercase tracking-wide">
+            Dashboard
+        </p>
+
+        <h1 class="text-4xl font-bold text-slate-900 mt-2">
+
+            Welcome,
+            <span id="username"
+                  class="text-indigo-600">
+                User
+            </span>
+
+        </h1>
+
+        <p class="text-slate-500 mt-2 text-lg">
+
+            Manage your orders and account from one place.
+
+        </p>
+
+    </div>
+
+
+    <!-- ================= STATS ================= -->
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+
+        <!-- Total Orders -->
+
+        <div class="bg-white rounded-2xl shadow-sm
+                    border border-slate-200 p-6">
+
+            <div class="flex items-center justify-between">
+
+                <div>
+
+                    <p class="text-slate-500 text-sm font-medium">
+                        Total Orders
+                    </p>
+
+                    <h2 id="totalOrders"
+                        class="text-4xl font-bold text-slate-900 mt-2">
+
+                        0
+
+                    </h2>
+
+                </div>
+
+                <div class="w-12 h-12 rounded-xl
+                            bg-indigo-100
+                            flex items-center justify-center">
+
+                    <span class="text-2xl">
+                        📦
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- My Orders -->
+
+        <div class="bg-white rounded-2xl shadow-sm
+                    border border-slate-200 p-6">
+
+            <div class="flex items-center justify-between">
+
+                <div>
+
+                    <p class="text-slate-500 text-sm font-medium">
+                        My Orders
+                    </p>
+
+                    <h2 id="myOrders"
+                        class="text-4xl font-bold text-slate-900 mt-2">
+
+                        0
+
+                    </h2>
+
+                </div>
+
+                <div class="w-12 h-12 rounded-xl
+                            bg-green-100
+                            flex items-center justify-center">
+
+                    <span class="text-2xl">
+                        🛒
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Account -->
+
+        <div class="bg-white rounded-2xl shadow-sm
+                    border border-slate-200 p-6">
+
+            <div class="flex items-center justify-between">
+
+                <div>
+
+                    <p class="text-slate-500 text-sm font-medium">
+                        Account Status
+                    </p>
+
+                    <h2 class="text-2xl font-bold
+                               text-green-600 mt-2">
+
+                        Active
+
+                    </h2>
+
+                </div>
+
+                <div class="w-12 h-12 rounded-xl
+                            bg-green-100
+                            flex items-center justify-center">
+
+                    <span class="text-2xl">
+                        ✓
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ACTION CARDS ================= -->
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+        <!-- Create Order -->
+
+        <div class="bg-white rounded-2xl
+                    border border-slate-200
+                    shadow-sm p-8">
+
+            <div class="w-14 h-14 rounded-xl
+                        bg-indigo-100
+                        flex items-center justify-center
+                        mb-5">
+
+                <span class="text-3xl">
+                    ➕
+                </span>
+
+            </div>
+
+            <h2 class="text-2xl font-bold text-slate-900">
+
+                Create New Order
+
+            </h2>
+
+            <p class="text-slate-500 mt-2 mb-6">
+
+                Create a new order by adding product,
+                quantity and price details.
+
+            </p>
+
+            <a th:href="@{/create-order}"
+               class="inline-block
+                      bg-indigo-600
+                      hover:bg-indigo-700
+                      text-white
+                      px-6 py-3
+                      rounded-lg
+                      font-semibold
+                      transition">
+
+                Create Order
+
+            </a>
+
+        </div>
+
+
+        <!-- View Orders -->
+
+        <div class="bg-white rounded-2xl
+                    border border-slate-200
+                    shadow-sm p-8">
+
+            <div class="w-14 h-14 rounded-xl
+                        bg-blue-100
+                        flex items-center justify-center
+                        mb-5">
+
+                <span class="text-3xl">
+                    📋
+                </span>
+
+            </div>
+
+            <h2 class="text-2xl font-bold text-slate-900">
+
+                Manage Orders
+
+            </h2>
+
+            <p class="text-slate-500 mt-2 mb-6">
+
+                View your orders, update order details
+                or delete existing orders.
+
+            </p>
+
+            <a th:href="@{/orders}"
+               class="inline-block
+                      bg-slate-900
+                      hover:bg-slate-800
+                      text-white
+                      px-6 py-3
+                      rounded-lg
+                      font-semibold
+                      transition">
+
+                View Orders
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= QUICK INFO ================= -->
+
+    <div class="mt-8 bg-indigo-50
+                border border-indigo-100
+                rounded-2xl p-6">
+
+        <h3 class="text-lg font-bold text-indigo-900">
+
+            🔐 Secure Account
+
+        </h3>
+
+        <p class="text-indigo-700 mt-1">
+
+            Your account is protected using JWT authentication.
+            Your authentication token is stored securely in your
+            browser session.
+
+        </p>
+
+    </div>
+
+
+    <!-- Error Message -->
+
+    <div id="dashboardMessage"
+         class="mt-6 text-center text-sm">
+    </div>
+
+
+</main>
+
+
+<!-- Dashboard JavaScript -->
+
+<script th:src="@{/js/api.js}"></script>
+
+<script th:src="@{/js/dashboard.js}"></script>
+
+
+</body>
+
+</html>

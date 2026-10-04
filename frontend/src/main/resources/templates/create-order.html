@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Order - OrderFlow</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-900 text-white shadow-lg">
+
+    <div class="max-w-7xl mx-auto px-6 py-4">
+
+        <div class="flex items-center justify-between">
+
+            <a th:href="@{/dashboard}"
+               class="text-2xl font-bold">
+
+                Order<span class="text-indigo-400">Flow</span>
+
+            </a>
+
+
+            <div class="flex items-center gap-6">
+
+                <a th:href="@{/dashboard}"
+                   class="text-slate-300 hover:text-white">
+
+                    Dashboard
+
+                </a>
+
+                <a th:href="@{/orders}"
+                   class="text-slate-300 hover:text-white">
+
+                    Orders
+
+                </a>
+
+                <a th:href="@{/profile}"
+                   class="text-slate-300 hover:text-white">
+
+                    Profile
+
+                </a>
+
+                <button id="logoutButton"
+                        class="bg-red-500 hover:bg-red-600
+                               px-4 py-2 rounded-lg">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="max-w-3xl mx-auto px-6 py-12">
+
+
+    <div class="mb-8">
+
+        <a th:href="@{/orders}"
+           class="text-indigo-600
+                  hover:text-indigo-700
+                  font-medium">
+
+            ← Back to Orders
+
+        </a>
+
+        <h1 class="text-4xl font-bold
+                   text-slate-900 mt-5">
+
+            Create New Order
+
+        </h1>
+
+        <p class="text-slate-500 mt-2">
+
+            Enter the product details below.
+
+        </p>
+
+    </div>
+
+
+    <!-- ================= FORM ================= -->
+
+    <div class="bg-white rounded-2xl
+                border border-slate-200
+                shadow-sm p-8">
+
+
+        <form id="createOrderForm">
+
+
+            <!-- Product Name -->
+
+            <div class="mb-6">
+
+                <label for="productName"
+                       class="block text-sm
+                              font-semibold
+                              text-slate-700 mb-2">
+
+                    Product Name
+
+                </label>
+
+                <input type="text"
+                       id="productName"
+                       name="productName"
+                       placeholder="Enter product name"
+                       required
+                       class="w-full px-4 py-3
+                              border border-slate-300
+                              rounded-lg
+                              focus:outline-none
+                              focus:ring-2
+                              focus:ring-indigo-500">
+
+            </div>
+
+
+            <!-- Quantity -->
+
+            <div class="mb-6">
+
+                <label for="quantity"
+                       class="block text-sm
+                              font-semibold
+                              text-slate-700 mb-2">
+
+                    Quantity
+
+                </label>
+
+                <input type="number"
+                       id="quantity"
+                       name="quantity"
+                       min="1"
+                       placeholder="Enter quantity"
+                       required
+                       class="w-full px-4 py-3
+                              border border-slate-300
+                              rounded-lg
+                              focus:outline-none
+                              focus:ring-2
+                              focus:ring-indigo-500">
+
+            </div>
+
+
+            <!-- Price -->
+
+            <div class="mb-6">
+
+                <label for="price"
+                       class="block text-sm
+                              font-semibold
+                              text-slate-700 mb-2">
+
+                    Price
+
+                </label>
+
+                <div class="relative">
+
+                    <span class="absolute
+                                 left-4 top-3
+                                 text-slate-500">
+
+                        ₹
+
+                    </span>
+
+                    <input type="number"
+                           id="price"
+                           name="price"
+                           min="1"
+                           step="0.01"
+                           placeholder="Enter price"
+                           required
+                           class="w-full pl-9 pr-4 py-3
+                                  border border-slate-300
+                                  rounded-lg
+                                  focus:outline-none
+                                  focus:ring-2
+                                  focus:ring-indigo-500">
+
+                </div>
+
+            </div>
+
+
+            <!-- Message -->
+
+            <div id="createOrderMessage"
+                 class="hidden mb-6
+                        px-4 py-3
+                        rounded-lg">
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="flex flex-col sm:flex-row
+                        gap-4">
+
+                <button type="submit"
+                        id="createOrderButton"
+                        class="flex-1
+                               bg-indigo-600
+                               hover:bg-indigo-700
+                               text-white
+                               py-3
+                               rounded-lg
+                               font-semibold">
+
+                    Create Order
+
+                </button>
+
+
+                <a th:href="@{/orders}"
+                   class="flex-1
+                          text-center
+                          bg-slate-100
+                          hover:bg-slate-200
+                          text-slate-700
+                          py-3
+                          rounded-lg
+                          font-semibold">
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<script th:src="@{/js/api.js}"></script>
+
+<script th:src="@{/js/create-order.js}"></script>
+
+
+</body>
+
+</html>

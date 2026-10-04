@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Orders - OrderFlow</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-900 text-white shadow-lg">
+
+    <div class="max-w-7xl mx-auto px-6 py-4">
+
+        <div class="flex items-center justify-between">
+
+            <a th:href="@{/dashboard}"
+               class="text-2xl font-bold">
+
+                Order<span class="text-indigo-400">Flow</span>
+
+            </a>
+
+            <div class="flex items-center gap-6">
+
+                <a th:href="@{/dashboard}"
+                   class="text-slate-300 hover:text-white">
+
+                    Dashboard
+
+                </a>
+
+                <a th:href="@{/orders}"
+                   class="text-indigo-400 font-semibold">
+
+                    Orders
+
+                </a>
+
+                <a th:href="@{/profile}"
+                   class="text-slate-300 hover:text-white">
+
+                    Profile
+
+                </a>
+
+                <button id="logoutButton"
+                        class="bg-red-500 hover:bg-red-600
+                               px-4 py-2 rounded-lg">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+
+    <!-- HEADER -->
+
+    <div class="flex flex-col md:flex-row
+                md:items-center md:justify-between
+                gap-4 mb-8">
+
+        <div>
+
+            <p class="text-indigo-600 font-semibold text-sm">
+                ORDER MANAGEMENT
+            </p>
+
+            <h1 class="text-4xl font-bold
+                       text-slate-900 mt-2">
+
+                My Orders
+
+            </h1>
+
+            <p class="text-slate-500 mt-2">
+
+                View and manage your orders.
+
+            </p>
+
+        </div>
+
+
+        <a th:href="@{/create-order}"
+           class="inline-flex items-center justify-center
+                  bg-indigo-600 hover:bg-indigo-700
+                  text-white px-6 py-3
+                  rounded-lg font-semibold">
+
+            + Create Order
+
+        </a>
+
+    </div>
+
+
+    <!-- ================= MESSAGE ================= -->
+
+    <div id="ordersMessage"
+         class="hidden mb-6 p-4 rounded-lg">
+    </div>
+
+
+    <!-- ================= LOADING ================= -->
+
+    <div id="loading"
+         class="text-center py-12">
+
+        <div class="inline-block
+                    w-10 h-10
+                    border-4 border-slate-200
+                    border-t-indigo-600
+                    rounded-full animate-spin">
+        </div>
+
+        <p class="text-slate-500 mt-4">
+            Loading orders...
+        </p>
+
+    </div>
+
+
+    <!-- ================= EMPTY STATE ================= -->
+
+    <div id="emptyState"
+         class="hidden bg-white
+                rounded-2xl
+                border border-slate-200
+                text-center
+                py-16 px-6">
+
+        <div class="text-6xl mb-4">
+            📦
+        </div>
+
+        <h2 class="text-2xl font-bold text-slate-900">
+
+            No Orders Found
+
+        </h2>
+
+        <p class="text-slate-500 mt-2 mb-6">
+
+            You haven't created any orders yet.
+
+        </p>
+
+        <a th:href="@{/create-order}"
+           class="inline-block
+                  bg-indigo-600
+                  hover:bg-indigo-700
+                  text-white
+                  px-6 py-3
+                  rounded-lg
+                  font-semibold">
+
+            Create Your First Order
+
+        </a>
+
+    </div>
+
+
+    <!-- ================= ORDER TABLE ================= -->
+
+    <div id="ordersContainer"
+         class="hidden bg-white
+                rounded-2xl
+                border border-slate-200
+                shadow-sm overflow-hidden">
+
+        <div class="overflow-x-auto">
+
+            <table class="w-full">
+
+                <thead class="bg-slate-900 text-white">
+
+                <tr>
+
+                    <th class="text-left px-6 py-4">
+                        ID
+                    </th>
+
+                    <th class="text-left px-6 py-4">
+                        Product
+                    </th>
+
+                    <th class="text-left px-6 py-4">
+                        Quantity
+                    </th>
+
+                    <th class="text-left px-6 py-4">
+                        Price
+                    </th>
+
+                    <th class="text-left px-6 py-4">
+                        Username
+                    </th>
+
+                    <th class="text-center px-6 py-4">
+                        Actions
+                    </th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="ordersTableBody"
+                       class="divide-y divide-slate-200">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<!-- Common API JS -->
+
+<script th:src="@{/js/api.js}"></script>
+
+<!-- Orders JS -->
+
+<script th:src="@{/js/orders.js}"></script>
+
+
+</body>
+
+</html>

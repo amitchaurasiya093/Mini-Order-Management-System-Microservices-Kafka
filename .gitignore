@@ -1,0 +1,45 @@
+# Java / Maven
+**/target/
+**/bin/
+**/out/
+
+# Eclipse / STS
+.metadata/
+.recommenders/
+.settings/
+.classpath
+.project
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment / Secrets
+.env
+.env.*
+!.env.example
+
+# Local configuration
+application-local.properties 
+application-local.yml
+
+# Node
+node_modules/
+dist/
+build/

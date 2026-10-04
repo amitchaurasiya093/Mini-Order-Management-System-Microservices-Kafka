@@ -1,0 +1,97 @@
+/* =====================================
+   Mini Order Management System
+   Custom Styles
+===================================== */
+
+
+/* Feature Card */
+
+.feature-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* Feature Icon */
+
+.feature-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.875rem;
+
+    font-size: 1.5rem;
+
+    margin-bottom: 1.25rem;
+}
+
+
+/* Feature Title */
+
+.feature-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+
+    color: #0f172a;
+
+    margin-bottom: 0.5rem;
+}
+
+
+/* Feature Description */
+
+.feature-text {
+    color: #64748b;
+
+    font-size: 0.95rem;
+
+    line-height: 1.6;
+}
+
+
+/* Technology Badge */
+
+.tech-badge {
+    display: inline-block;
+
+    padding: 0.6rem 1rem;
+
+    background: white;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9999px;
+
+    color: #475569;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+}
+
+
+/* Smooth Scrolling */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Selection */
+
+::selection {
+    background: #2563eb;
+    color: white;
+}
